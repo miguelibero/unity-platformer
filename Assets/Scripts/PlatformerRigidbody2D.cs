@@ -8,7 +8,7 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
     [SerializeField] private float _minSpeed = -40f;
     [SerializeField] private float _minGravity = 80f;
     [SerializeField] private float _maxGravity = 120f;
-    [SerializeField] private LayerMask _terrainLayer;
+    [SerializeField] private LayerMask _terrainLayer = int.MaxValue;
 
     private Collider2D _collider;
 
