@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
@@ -9,6 +10,8 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
     [SerializeField] private float _maxGravity = 120f;
 
     private Collider2D _collider;
+
+    [NonSerialized]
     public Vector2 Velocity;
 
     public float JumpApex { get; private set; }
@@ -35,6 +38,11 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
         var gravity = Mathf.Lerp(_minGravity, _maxGravity, JumpApex);
         Velocity.y -= gravity * dt;
         Velocity.y = Mathf.Clamp(Velocity.y, _minSpeed, float.MaxValue);
+
+        if(Mathf.Approximately(0.0f, Velocity.magnitude))
+        {
+            return;
+        }
 
         var i = 0;
         var grounded = false;
