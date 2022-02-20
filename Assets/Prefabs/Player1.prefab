@@ -228,7 +228,6 @@ MonoBehaviour:
   _minSpeed: -40
   _minGravity: 80
   _maxGravity: 120
-  Velocity: {x: 0, y: 0}
 --- !u!50 &6849216713496431441
 Rigidbody2D:
   serializedVersion: 4
@@ -237,7 +236,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500327600943977033}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

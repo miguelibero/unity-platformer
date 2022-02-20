@@ -77,11 +77,14 @@ public sealed class PlayerController : MonoBehaviour
         if (Rigidbody.Grounded)
         {
             _timeSinceLastGrounded = 0;
-            Jumping = false;
         }
         else if (_timeSinceLastGrounded < _coyoteBuffer)
         {
             _timeSinceLastGrounded += dt;
+        }
+        if(Rigidbody.EnteredGround)
+        {
+            Jumping = false;
         }
         if (_pendingJump && _timeSinceLastJumpDownPressed < _jumpBuffer && _timeSinceLastGrounded < _coyoteBuffer)
         {

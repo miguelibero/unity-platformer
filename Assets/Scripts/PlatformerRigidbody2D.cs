@@ -8,6 +8,7 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
     [SerializeField] private float _minSpeed = -40f;
     [SerializeField] private float _minGravity = 80f;
     [SerializeField] private float _maxGravity = 120f;
+    [SerializeField] private LayerMask _terrainLayer;
 
     private Collider2D _collider;
 
@@ -46,10 +47,13 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
 
         var i = 0;
         var grounded = false;
+        var filter = new ContactFilter2D();
+        filter.layerMask = _terrainLayer;
+        filter.useTriggers = false;
         foreach (var dir in _dirs)
         {
             var dist = Vector2.Dot(Velocity, dir) * dt;
-            var count = _collider.Cast(dir, _raycastHits, dist);
+            var count = _collider.Cast(dir, filter, _raycastHits, dist);
             if(count > 0)
             {
                 if(i == 0)
