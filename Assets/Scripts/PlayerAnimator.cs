@@ -1,7 +1,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PlayerAnimator : MonoBehaviour
+public sealed class PlayerAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _anim;
     [SerializeField] private AudioSource _source;

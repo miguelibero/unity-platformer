@@ -202,13 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c55abac978a4db46851957c7d7ed73b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpApexThreshold: 10
-  _minSpeed: -40
-  _minGravity: 80
-  _maxGravity: 120
-  _terrainLayer:
-    serializedVersion: 2
-    m_Bits: 8
+  _settings: {fileID: 11400000, guid: 037777f305858f246afae63a4624af60, type: 2}
 --- !u!114 &268262187497717709
 MonoBehaviour:
   m_ObjectHideFlags: 0

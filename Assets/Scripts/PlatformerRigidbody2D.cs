@@ -4,11 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public sealed class PlatformerRigidbody2D : MonoBehaviour
 {
-    [SerializeField] private float _jumpApexThreshold = 10f;
-    [SerializeField] private float _minSpeed = -40f;
-    [SerializeField] private float _minGravity = 80f;
-    [SerializeField] private float _maxGravity = 120f;
-    [SerializeField] private LayerMask _terrainLayer = int.MaxValue;
+    [SerializeField] private PlatformerRigidbody2DSettings _settings;
 
     private Collider2D _collider;
 
@@ -35,10 +31,10 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
     {
         var dt = Time.fixedDeltaTime;
 
-        JumpApex = Mathf.InverseLerp(_jumpApexThreshold, 0, Mathf.Abs(Velocity.y));
-        var gravity = Mathf.Lerp(_minGravity, _maxGravity, JumpApex);
+        JumpApex = Mathf.InverseLerp(_settings.JumpApexThreshold, 0, Mathf.Abs(Velocity.y));
+        var gravity = Mathf.Lerp(_settings.MinGravity, _settings.MaxGravity, JumpApex);
         Velocity.y -= gravity * dt;
-        Velocity.y = Mathf.Clamp(Velocity.y, _minSpeed, float.MaxValue);
+        Velocity.y = Mathf.Clamp(Velocity.y, _settings.MinSpeed, float.MaxValue);
 
         if(Mathf.Approximately(0.0f, Velocity.magnitude))
         {
@@ -48,7 +44,7 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
         var i = 0;
         var grounded = false;
         var filter = new ContactFilter2D();
-        filter.layerMask = _terrainLayer;
+        filter.layerMask = _settings.TerrainLayer;
         filter.useTriggers = false;
         foreach (var dir in _dirs)
         {
