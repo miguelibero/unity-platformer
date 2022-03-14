@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 268262187078602189}
   - component: {fileID: 268262187078602188}
   - component: {fileID: 268262187078602190}
-  - component: {fileID: 268262187078602191}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -106,29 +105,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &268262187078602191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268262187078602179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa49076046223aa4c9fa91d9a7278329, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _anim: {fileID: 268262187078602190}
-  _source: {fileID: 0}
-  _jumpParticles: {fileID: 0}
-  _launchParticles: {fileID: 0}
-  _moveParticles: {fileID: 0}
-  _landParticles: {fileID: 0}
-  _footsteps: []
-  _maxTilt: 0.1
-  _tiltSpeed: 1
-  _maxAnimationSpeed: 1
-  _maxParticleFallSpeed: -40
 --- !u!1 &268262187497717699
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,7 +117,8 @@ GameObject:
   - component: {fileID: 268262187497717711}
   - component: {fileID: 268262187497717710}
   - component: {fileID: 268262187497717709}
-  m_Layer: 0
+  - component: {fileID: 5132782921944480571}
+  m_Layer: 6
   m_Name: Punk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,3 +200,21 @@ MonoBehaviour:
   _shortJumpFactor: 0.3
   _coyoteBuffer: 0.1
   _jumpBuffer: 0.1
+--- !u!114 &5132782921944480571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268262187497717699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa49076046223aa4c9fa91d9a7278329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 268262187078602190}
+  _source: {fileID: 0}
+  _footsteps: []
+  _maxTilt: 0.1
+  _tiltSpeed: 1
+  _maxAnimationSpeed: 1

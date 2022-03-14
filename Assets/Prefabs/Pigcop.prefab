@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 7315331724022876021}
   - component: {fileID: 7315331724022876020}
   - component: {fileID: 2179552504106698693}
-  m_Layer: 0
+  - component: {fileID: 1224430435796616793}
+  m_Layer: 6
   m_Name: Pigcop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,6 +74,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: 037777f305858f246afae63a4624af60, type: 2}
+--- !u!114 &1224430435796616793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315331724022876022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa49076046223aa4c9fa91d9a7278329, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _anim: {fileID: 7315331724124444490}
+  _source: {fileID: 0}
+  _footsteps: []
+  _maxTilt: 0.1
+  _tiltSpeed: 1
+  _maxAnimationSpeed: 2
 --- !u!1 &7315331724124444500
 GameObject:
   m_ObjectHideFlags: 0

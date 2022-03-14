@@ -31,12 +31,17 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
     {
         var dt = Time.fixedDeltaTime;
 
+        UpdatePosition(dt);
+    }
+
+    void UpdatePosition(float dt)
+    {
         JumpApex = Mathf.InverseLerp(_settings.JumpApexThreshold, 0, Mathf.Abs(Velocity.y));
         var gravity = Mathf.Lerp(_settings.MinGravity, _settings.MaxGravity, JumpApex);
         Velocity.y -= gravity * dt;
-        Velocity.y = Mathf.Clamp(Velocity.y, _settings.MinSpeed, float.MaxValue);
+        Velocity.y = Mathf.Clamp(Velocity.y, -_settings.MaxFallSpeed, float.MaxValue);
 
-        if(Mathf.Approximately(0.0f, Velocity.magnitude))
+        if (Mathf.Approximately(0.0f, Velocity.magnitude))
         {
             return;
         }
@@ -50,9 +55,9 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
         {
             var dist = Vector2.Dot(Velocity, dir) * dt;
             var count = _collider.Cast(dir, filter, _raycastHits, dist);
-            if(count > 0)
+            if (count > 0)
             {
-                if(i == 0)
+                if (i == 0)
                 {
                     grounded = true;
                 }

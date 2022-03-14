@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: PlatformerRigidbody2DSettings
   m_EditorClassIdentifier: 
   JumpApexThreshold: 10
-  MinSpeed: -40
+  MaxFallSpeed: 40
   MinGravity: 80
   MaxGravity: 120
   TerrainLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
