@@ -219,7 +219,7 @@ MonoBehaviour:
   _maxRunSpeed: 13
   _deAcceleration: 60
   _apexBonus: 2
-  _jumpHeight: 30
+  _jumpHeight: 20
   _shortJumpFactor: 0.3
   _coyoteBuffer: 0.1
   _jumpBuffer: 0.1

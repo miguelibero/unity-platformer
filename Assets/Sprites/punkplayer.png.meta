@@ -132,8 +132,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 32
-        width: 18
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,9 +152,9 @@ TextureImporter:
       name: punkplayer_1
       rect:
         serializedVersion: 2
-        x: 18
-        y: 32
-        width: 18
+        x: 32
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,9 +173,9 @@ TextureImporter:
       name: punkplayer_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 32
-        width: 18
+        x: 64
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,9 +194,9 @@ TextureImporter:
       name: punkplayer_3
       rect:
         serializedVersion: 2
-        x: 54
-        y: 32
-        width: 18
+        x: 96
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,9 +215,9 @@ TextureImporter:
       name: punkplayer_4
       rect:
         serializedVersion: 2
-        x: 72
-        y: 32
-        width: 18
+        x: 128
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -236,9 +236,9 @@ TextureImporter:
       name: punkplayer_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 18
+        x: 160
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -257,9 +257,9 @@ TextureImporter:
       name: punkplayer_6
       rect:
         serializedVersion: 2
-        x: 18
-        y: 0
-        width: 18
+        x: 192
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -278,9 +278,9 @@ TextureImporter:
       name: punkplayer_7
       rect:
         serializedVersion: 2
-        x: 36
-        y: 0
-        width: 18
+        x: 224
+        y: 64
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -299,9 +299,9 @@ TextureImporter:
       name: punkplayer_8
       rect:
         serializedVersion: 2
-        x: 54
-        y: 0
-        width: 18
+        x: 0
+        y: 32
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -320,9 +320,9 @@ TextureImporter:
       name: punkplayer_9
       rect:
         serializedVersion: 2
-        x: 72
-        y: 0
-        width: 18
+        x: 32
+        y: 32
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -333,6 +333,153 @@ TextureImporter:
       bones: []
       spriteID: e1df1eed0bf1cdd438847d20c26c3779
       internalID: -2060090443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: punkplayer_10
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67937d1ba6bfd9f4a933d116b3f66c21
+      internalID: 415581117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: punkplayer_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b177654561510a4d83c7b5d7a609602
+      internalID: 1182210023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: punkplayer_12
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76f0ce52ad0415e4896bb5935ce66831
+      internalID: 1825818420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: punkplayer_13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff5c280911bff148bbe5325b56f3385
+      internalID: -1028375696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: punkplayer_14
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f24bda297ce6b94cb3fc651eff2de02
+      internalID: -1292853418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: punkplayer_15
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b315a1be31ccb6a4498bf7576f36f157
+      internalID: 1486052670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: punkplayer_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d7320ab073f8454b9dd5356dd5fd35e
+      internalID: 2026847156
       vertices: []
       indices: 
       edges: []
@@ -349,13 +496,20 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       punkplayer_0: 2082976285
+      punkplayer_11: 1182210023
+      punkplayer_10: 415581117
+      punkplayer_13: -1028375696
+      punkplayer_12: 1825818420
       punkplayer_3: 839089321
       punkplayer_1: 810271097
+      punkplayer_16: 2026847156
       punkplayer_9: -2060090443
       punkplayer_5: -320891099
       punkplayer_6: 1437904840
       punkplayer_2: 106406081
+      punkplayer_14: -1292853418
       punkplayer_8: -1777166050
+      punkplayer_15: 1486052670
       punkplayer_4: 1510502955
       punkplayer_7: -1003027477
   spritePackingTag: 
