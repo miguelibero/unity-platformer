@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 268262187497717708}
   - component: {fileID: 268262187497717711}
+  - component: {fileID: 5027907584173721412}
   - component: {fileID: 268262187497717710}
   - component: {fileID: 268262187497717709}
   - component: {fileID: 5132782921944480571}
@@ -167,6 +168,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.53846973, y: 1.6766224}
   m_EdgeRadius: 0
+--- !u!50 &5027907584173721412
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268262187497717699}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &268262187497717710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5fab70f7991b8347a7c7c72316531b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 0}
   _acceleration: 90
   _maxRunSpeed: 13
   _deAcceleration: 60
@@ -213,8 +236,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 268262187078602190}
-  _source: {fileID: 0}
-  _footsteps: []
   _maxTilt: 0.1
   _tiltSpeed: 1
-  _maxAnimationSpeed: 1
+  _minRunSpeed: 0.1
+  _source: {fileID: 0}
+  _footsteps: []

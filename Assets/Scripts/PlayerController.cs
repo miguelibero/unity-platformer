@@ -4,31 +4,37 @@ using UnityEngine;
 [RequireComponent(typeof(PlatformerRigidbody2D))]
 public sealed class PlayerController : MonoBehaviour
 {
-    public PlatformerRigidbody2D Rigidbody { get; private set; }
-    public float HorizontalInput => _xInput;
-
-    public bool Jumping { get; private set; }
-
-    private float _xInput;
-    private bool _jumpDownPressed;
-    private bool _jumpUpPressed;
+    public PlatformerRigidbody2D _rigidbody;
 
     private void Awake()
     {
-        Rigidbody = GetComponent<PlatformerRigidbody2D>();
+        _rigidbody = GetComponent<PlatformerRigidbody2D>();
+    }
+
+    enum ButtonInputState
+    {
+        None,
+        PressedUp,
+        PressedDown,
     }
 
     private void Update()
     {
-        _jumpDownPressed = Input.GetButtonDown("Jump");
-        _jumpUpPressed = Input.GetButtonUp("Jump");
-        _xInput = Input.GetAxisRaw("Horizontal");
+        var jump = ButtonInputState.None;
+        if(Input.GetButtonDown("Jump"))
+        {
+            jump = ButtonInputState.PressedDown;
+        }
+        else if (Input.GetButtonUp("Jump"))
+        {
+            jump = ButtonInputState.PressedUp;
+        }
+        var xinput = Input.GetAxisRaw("Horizontal");
 
         var dt = Time.deltaTime;
-        CalculateRun(dt);
-        CalculateJump(dt);
+        CalculateRun(dt, xinput);
+        CalculateJump(dt, jump);
     }
-
 
     [Header("Run")]
     [SerializeField] private float _acceleration = 90;
@@ -36,21 +42,21 @@ public sealed class PlayerController : MonoBehaviour
     [SerializeField] private float _deAcceleration = 60f;
     [SerializeField] private float _apexBonus = 2;
 
-    private void CalculateRun(float dt)
+    private void CalculateRun(float dt, float xinput)
     {
-        var speed = Rigidbody.Velocity;
-        if (_xInput != 0)
+        var speed = _rigidbody.Velocity;
+        if (xinput != 0)
         {
-            speed.x += _xInput * _acceleration * dt;
+            speed.x += xinput * _acceleration * dt;
             speed.x = Mathf.Clamp(speed.x, -_maxRunSpeed, _maxRunSpeed);
-            var apexBonus = Mathf.Sign(_xInput) * _apexBonus * Rigidbody.JumpApex;
+            var apexBonus = Mathf.Sign(xinput) * _apexBonus * _rigidbody.JumpApex;
             speed.x += apexBonus * dt;
         }
         else
         {
             speed.x = Mathf.MoveTowards(speed.x, 0, _deAcceleration * dt);
         }
-        Rigidbody.Velocity = speed;
+        _rigidbody.Velocity = speed;
     }
 
     [Header("Jumping")]
@@ -63,18 +69,18 @@ public sealed class PlayerController : MonoBehaviour
     private float _timeSinceLastJumpDownPressed;
     private float _timeSinceLastGrounded;
 
-    private void CalculateJump(float dt)
+    private void CalculateJump(float dt, ButtonInputState input)
     {
         if (_pendingJump && _timeSinceLastJumpDownPressed < _jumpBuffer)
         {
             _timeSinceLastJumpDownPressed += dt;
         }
-        if (_jumpDownPressed)
+        if (input == ButtonInputState.PressedDown)
         {
             _timeSinceLastJumpDownPressed = 0.0f;
             _pendingJump = true;
         }
-        if (Rigidbody.Grounded)
+        if (_rigidbody.Grounded)
         {
             _timeSinceLastGrounded = 0;
         }
@@ -82,24 +88,19 @@ public sealed class PlayerController : MonoBehaviour
         {
             _timeSinceLastGrounded += dt;
         }
-        if(Rigidbody.EnteredGround)
-        {
-            Jumping = false;
-        }
         if (_pendingJump && _timeSinceLastJumpDownPressed < _jumpBuffer && _timeSinceLastGrounded < _coyoteBuffer)
         {
-            var speed = Rigidbody.Velocity;
+            var speed = _rigidbody.Velocity;
             speed.y = _jumpHeight;
-            Rigidbody.Velocity = speed;
+            _rigidbody.Velocity = speed;
             _pendingJump = false;
-            Jumping = true;
         }
         
-        if (!Rigidbody.Grounded && _jumpUpPressed && Rigidbody.Velocity.y > 0)
+        if (!_rigidbody.Grounded && input == ButtonInputState.PressedUp && _rigidbody.Velocity.y > 0)
         {
-            var speed = Rigidbody.Velocity;
+            var speed = _rigidbody.Velocity;
             speed.y *= _shortJumpFactor;
-            Rigidbody.Velocity = speed;
+            _rigidbody.Velocity = speed;
         }
     }
 }

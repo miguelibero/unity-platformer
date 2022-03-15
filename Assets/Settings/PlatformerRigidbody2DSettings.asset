@@ -16,6 +16,7 @@ MonoBehaviour:
   MaxFallSpeed: 40
   MinGravity: 80
   MaxGravity: 120
+  MinVerticalPosition: -3
   TerrainLayer:
     serializedVersion: 2
     m_Bits: 72

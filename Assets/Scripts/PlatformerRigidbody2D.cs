@@ -2,11 +2,13 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public sealed class PlatformerRigidbody2D : MonoBehaviour
 {
     [SerializeField] private PlatformerRigidbody2DSettings _settings;
 
     private Collider2D _collider;
+    public Vector2 RealVelocity { get; private set; }
 
     [NonSerialized]
     public Vector2 Velocity;
@@ -22,6 +24,8 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
     private void Awake()
     {
         _collider = GetComponent<Collider2D>();
+        var rigidbody = GetComponent<Rigidbody2D>();
+        Debug.Assert(rigidbody.bodyType == RigidbodyType2D.Kinematic, "Rigidbody2D should be Kinematic for this one to work");
     }
 
     private static readonly RaycastHit2D[] _raycastHits = new RaycastHit2D[1];
@@ -46,7 +50,6 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
             return;
         }
 
-        var i = 0;
         var grounded = false;
         var filter = new ContactFilter2D();
         filter.layerMask = _settings.TerrainLayer;
@@ -54,19 +57,36 @@ public sealed class PlatformerRigidbody2D : MonoBehaviour
         foreach (var dir in _dirs)
         {
             var dist = Vector2.Dot(Velocity, dir) * dt;
-            var count = _collider.Cast(dir, filter, _raycastHits, dist);
-            if (count > 0)
+            if (_collider.Cast(dir, filter, _raycastHits, dist) == 0)
             {
-                if (i == 0)
-                {
-                    grounded = true;
-                }
-                var hit = _raycastHits[0];
-                Velocity -= hit.normal * Vector2.Dot(Velocity, hit.normal);
+                continue;
             }
-            i++;
+            if (dir == Vector2.down)
+            {
+                grounded = true;
+            }
+            var hit = _raycastHits[0];
+            if (Mathf.Approximately(0.0f, hit.distance))
+            {
+                // colliders are intersecting, in this case
+                // don't fall and stop moving in the direction
+                // of the other one
+                var dx = hit.point.x - hit.centroid.x;
+                if (dx * Velocity.x > 0.0f)
+                {
+                    Velocity.x = 0.0f;
+                }
+                if (Velocity.y < 0.0f)
+                {
+                    Velocity.y = 0.0f;
+                }
+                break;
+            }
+            var normal = hit.normal;
+            Velocity -= normal * Vector2.Dot(Velocity, normal);
         }
 
+        RealVelocity = Velocity;
         var pos = Velocity * dt;
         transform.position += new Vector3(pos.x, pos.y, 0.0f);
 

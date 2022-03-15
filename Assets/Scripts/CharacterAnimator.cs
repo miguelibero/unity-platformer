@@ -6,17 +6,18 @@ using Random = UnityEngine.Random;
 public sealed class CharacterAnimator : MonoBehaviour
 {
     [SerializeField] private Animator _anim;
-    [SerializeField] private AudioSource _source;
-    [SerializeField] private AudioClip[] _footsteps;
+
     [SerializeField] private float _maxTilt = .1f;
     [SerializeField] private float _tiltSpeed = 1;
     [SerializeField] private float _minRunSpeed = 0.1f;
-    [SerializeField, Range(1f, 3f)] private float _maxAnimationSpeed = 2;
+
+    [Header("Sound")]
+    [SerializeField] private AudioSource _source;
+    [SerializeField] private AudioClip[] _footsteps;
 
     private PlatformerRigidbody2D _rigidbody;
 
     private static readonly int _runningAnimKey = Animator.StringToHash("Running");
-    private static readonly int _speedAnimKey = Animator.StringToHash("Speed");
     private static readonly int _jumpingAnimKey = Animator.StringToHash("Jumping");
 
     void Awake()
@@ -33,7 +34,7 @@ public sealed class CharacterAnimator : MonoBehaviour
 
     void UpdateAnimations(float dt)
     {
-        var xinput = _rigidbody.Velocity.x;
+        var xinput = _rigidbody.RealVelocity.x;
         var jumping = !_rigidbody.Grounded;
         var running = !jumping && Mathf.Abs(xinput) >= _minRunSpeed;
         var lookingRight = xinput > 0.0f;
@@ -44,8 +45,6 @@ public sealed class CharacterAnimator : MonoBehaviour
         var rot = new Vector3(0, 0, Mathf.Lerp(-_maxTilt, _maxTilt, Mathf.InverseLerp(-1, 1, xinput)));
         _anim.transform.rotation = Quaternion.RotateTowards(_anim.transform.rotation, Quaternion.Euler(rot), _tiltSpeed * dt);
 
-        Debug.Log($"xinput {xinput} running {running}");
-        _anim.SetFloat(_speedAnimKey, Mathf.Lerp(1, _maxAnimationSpeed, Mathf.Abs(xinput)));
         _anim.SetBool(_runningAnimKey, running);
         _anim.SetBool(_jumpingAnimKey, jumping);
     }

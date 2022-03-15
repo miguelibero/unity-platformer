@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7315331724022876021}
   - component: {fileID: 7315331724022876020}
+  - component: {fileID: 2594979523361698443}
   - component: {fileID: 2179552504106698693}
   - component: {fileID: 1224430435796616793}
   m_Layer: 6
@@ -61,6 +62,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8414624, y: 1.9089491}
   m_EdgeRadius: 0
+--- !u!50 &2594979523361698443
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315331724022876022}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &2179552504106698693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,11 +109,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 7315331724124444490}
-  _source: {fileID: 0}
-  _footsteps: []
   _maxTilt: 0.1
   _tiltSpeed: 1
-  _maxAnimationSpeed: 2
+  _minRunSpeed: 0.1
+  _source: {fileID: 0}
+  _footsteps: []
 --- !u!1 &7315331724124444500
 GameObject:
   m_ObjectHideFlags: 0
