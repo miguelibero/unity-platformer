@@ -9,14 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67714152b588a00449a92b4fed003647, type: 3}
-  m_Name: PlatformerRigidbody2DSettings
+  m_Script: {fileID: 11500000, guid: f74a26fde132b3243b13ebb3119d1b6c, type: 3}
+  m_Name: CharacterController2DSettings
   m_EditorClassIdentifier: 
   JumpApexThreshold: 10
   MaxFallSpeed: 40
-  MinGravity: 80
-  MaxGravity: 120
-  MinVerticalPosition: -3
-  TerrainLayer:
-    serializedVersion: 2
-    m_Bits: 72
+  MinGravity: 5
+  MaxGravity: 5

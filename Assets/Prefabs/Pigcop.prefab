@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2594979523361698443}
   - component: {fileID: 2179552504106698693}
   - component: {fileID: 1224430435796616793}
+  - component: {fileID: 5886189790954669447}
   m_Layer: 6
   m_Name: Pigcop
   m_TagString: Untagged
@@ -70,13 +71,13 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7315331724022876022}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.6063088
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -92,10 +93,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7315331724022876022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c55abac978a4db46851957c7d7ed73b, type: 3}
+  m_Script: {fileID: 11500000, guid: e68706406b87ed840a08e3006094676e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _settings: {fileID: 11400000, guid: 037777f305858f246afae63a4624af60, type: 2}
+  MaxFallSpeed: 40
+  Gravity: 10
+  _colliding:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1224430435796616793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,11 +116,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _anim: {fileID: 7315331724124444490}
-  _maxTilt: 0.1
-  _tiltSpeed: 1
-  _minRunSpeed: 0.1
+  _minMoveVelocity: 0.1
   _source: {fileID: 0}
   _footsteps: []
+--- !u!114 &5886189790954669447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315331724022876022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdee7fddd17140245ba6cfa37269180e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _velocity: 2
+  _patrolDuration: 2
+  _waitDuration: 2
 --- !u!1 &7315331724124444500
 GameObject:
   m_ObjectHideFlags: 0

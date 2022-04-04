@@ -1,21 +1,20 @@
 using UnityEngine;
 
 
-[RequireComponent(typeof(PlatformerRigidbody2D))]
+[RequireComponent(typeof(CharacterController2D))]
 public sealed class PatrolController : MonoBehaviour
 {
-    [SerializeField] float _speed = 13;
-    [SerializeField] float _patrolDuration = 2;
-    [SerializeField] float _waitDuration = 2;
-    [SerializeField] Animator _animator;
+    [SerializeField] float _velocity = 2;
+    [SerializeField] float _patrolDuration = 2f;
+    [SerializeField] float _waitDuration = 2f;
 
-    public PlatformerRigidbody2D Rigidbody { get; private set; }
+    CharacterController2D _character;
 
     float _time;
 
     private void Awake()
     {
-        Rigidbody = GetComponent<PlatformerRigidbody2D>();
+        _character = GetComponent<CharacterController2D>();
     }
 
     private void Start()
@@ -25,7 +24,13 @@ public sealed class PatrolController : MonoBehaviour
 
     private void Update()
     {
-        _time += Time.deltaTime;
+        var dt = Time.deltaTime;
+        UpdatePosition(dt);
+    }
+
+    void UpdatePosition(float dt)
+    { 
+        _time += dt;
         var dx = 0.0f;
         if (_time < _patrolDuration)
         {
@@ -39,7 +44,6 @@ public sealed class PatrolController : MonoBehaviour
         {
             _time = 0.0f;
         }
-
-        Rigidbody.Velocity.x = dx * _speed;
+        _character.Move(_velocity*dx);
     }
 }
